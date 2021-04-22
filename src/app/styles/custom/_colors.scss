@@ -44,6 +44,11 @@
 	@include defineColorHSL(--color-contrast-higher, 240, 8%, 12%);
 }
 
+[data-theme] {
+	background-color: var(--color-bg);
+	color: var(--color-contrast-high);
+}
+
 @supports(--css: variables) {
 	[data-theme="dark"] {
 		// main

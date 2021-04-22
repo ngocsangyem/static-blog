@@ -133,7 +133,7 @@ const compileStyles = () => {
 	})
 		.pipe(pluginErrorHandle())
 		.pipe(
-			dependents(dependentsConfig, {
+			plugins.dependents(dependentsConfig, {
 				logDependents: true,
 				logDependencyMap: false,
 			})

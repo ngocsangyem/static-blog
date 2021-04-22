@@ -1,5 +1,9 @@
+import HeaderComponent from '@/components/header/header';
+
 export class IndexComponent {
-	constructor() {}
+	constructor() {
+		HeaderComponent.init();
+	}
 
 	static init() {
 		const index = new IndexComponent();

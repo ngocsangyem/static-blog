@@ -1,0 +1,27 @@
+@import "../../styles/styles.scss";
+
+.toggle-theme {
+	.icon-moon {
+		display: none;
+	}
+
+	input {
+		display: none;
+
+		&:checked {
+			+ label {
+				.icon-sunny {
+					display: none;
+				}
+
+				.icon-moon {
+					display: block;
+				}
+			}
+		}
+	}
+
+	label {
+		cursor: pointer;
+	}
+}
