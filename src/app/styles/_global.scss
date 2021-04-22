@@ -11,3 +11,14 @@
 @import './global/spacing';
 @import './global/visibility';
 @import './global/z-index';
+
+body {
+	font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	line-height: 1.6;
+	color: var(--text-color);
+	background-color: var(--background-color);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: all .25s;
+}
