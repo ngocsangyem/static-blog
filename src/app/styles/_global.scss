@@ -11,16 +11,29 @@
 // @import './global/spacing';
 @import './global/visibility';
 @import './global/z-index';
+@import './global/grid';
 
 body {
-	font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: var(--primary-font-family);
 	font-size: 16px;
 	line-height: 1.6;
 
-	color: var(--text-color);
-	background-color: var(--background-color);
-
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	transition: all .25s;
+}
+
+
+.container {
+	--custom-width-lg: 1100px;
+	@include breakpoint(sm) {
+		max-width: var(--max-width-md);
+	}
+
+	@include breakpoint(md) {
+		max-width: var(--max-width-sm);
+	}
+
+	@include breakpoint(lg) {
+		max-width: var(--custom-width-lg);
+	}
 }

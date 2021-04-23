@@ -1,4 +1,5 @@
 const { task, src, dest, lastRun } = require('gulp');
+const { resolve } = require('path');
 
 const Fiber = require('fibers');
 const cssDeclarationSorter = require('css-declaration-sorter');
@@ -76,8 +77,6 @@ const concat = () =>
 
 const filter = () => plugins.filter((file) => file.path.includes(paths._pages));
 
-const dependents = () => plugins.dependents();
-
 const dependentsConfig = {
 	'.scss': {
 		// The sequence of RegExps and/or functions to use when parsing
@@ -99,8 +98,8 @@ const dependentsConfig = {
 			/^\s*@import\s+(.+?);/gm,
 
 			// Split the captured text on "," to get each path.
-			function (text) {
-				return text.split(',');
+			function (str) {
+				return str.split(',');
 			},
 
 			// Match the balanced quotes and capture only the file path.
@@ -124,6 +123,12 @@ const dependentsConfig = {
 	},
 };
 
+const dependents = () =>
+	plugins.dependents(dependentsConfig, {
+		logDependents: true,
+		logDependencyMap: false,
+	});
+
 const compileStyles = () => {
 	const checkFiles = require(paths.core('checkFiles'));
 	checkFiles('styles');
@@ -132,12 +137,7 @@ const compileStyles = () => {
 		since: lastRun('compile:styles'),
 	})
 		.pipe(pluginErrorHandle())
-		.pipe(
-			plugins.dependents(dependentsConfig, {
-				logDependents: true,
-				logDependencyMap: false,
-			})
-		)
+		.pipe(dependents())
 		.pipe(filter())
 		.pipe(sourcemapsInit())
 		.pipe(compileSass())

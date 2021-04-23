@@ -1,1 +1,122 @@
 @import '../toggle-theme/toggle-theme';
+
+.header {
+	&__inner {
+		display: flex;
+		align-items: center;
+
+		@include pad(var(--space-lg), null, var(--space-sm), null)
+	}
+
+	.nav-buttons {
+		margin-left: auto;
+
+		display: flex;
+		align-items: center;
+
+		svg {
+			width: var(--text-lg);
+			height: var(--text-lg);
+			fill: var(--color-contrast-higher);
+
+			path {
+				stroke: var(--color-contrast-higher);
+			}
+		}
+
+		.nav-button {
+			line-height: 1;
+
+			&:not(:last-child) {
+				margin-right: var(--space-sm);
+			}
+		}
+	}
+}
+
+.main-nav {
+	.nav {
+		&__link {
+			text-decoration: none;
+			font-size: 1rem;
+			font-weight: 700;
+
+			display: block;
+
+			color: var(--color-contrast-higher);
+		}
+	}
+}
+
+.logo {
+	&__link {
+		display: inline-block;
+
+		font-family: var(--secondary-font-family);
+		font-size: var(--text-xl);
+		font-weight: 700;
+		text-decoration: none;
+
+		color: var(--color-contrast-higher);
+	}
+}
+
+@media screen and (max-width: map-get($map: $breakpoints, $key: md)) {
+	.main-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 200;
+
+		width: 100%;
+		height: 100%;
+
+		opacity: 0;
+		visibility: hidden;
+		background-color: var(--color-bg, white);
+		transition: all 0.3s ease-in-out;
+
+		.nav {
+			width: calc(100% - 2*var(--component-padding));
+			height: 100%;
+
+			position: relative;
+
+			@include mar(null, auto, null, auto);
+			@include pad(var(--space-lg), null, null, null);
+
+			&__link {
+				@include pad(var(--space-sm), null, var(--space-sm), null)
+			}
+
+			&__title {
+				display: flex;
+				align-items: center;
+
+				margin-bottom: var(--space-sm);
+
+				font-family: var(--secondary-font-family);
+				font-weight: 700;
+
+				span {
+					font-size: var(--text-xl);
+				}
+			}
+
+			&__close {
+				margin-left: auto;
+
+				line-height: 1;
+				svg {
+					width: 30px;
+					height: 30px;
+				}
+			}
+		}
+
+		&.is-show {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}

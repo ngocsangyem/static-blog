@@ -82,7 +82,11 @@ const dependentsConfig = {
 	},
 };
 
-const dependents = () => plugins.dependents(dependentsConfig);
+const dependents = () =>
+	plugins.dependents(dependentsConfig, {
+		logDependents: true,
+		logDependencyMap: false,
+	});
 
 const compileTemplates = () =>
 	src(inputs(), { cwd: paths._app, since: lastRun('compile:templates') })

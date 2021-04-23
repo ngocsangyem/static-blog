@@ -1,7 +1,7 @@
 @import "../../styles/styles.scss";
 
 .toggle-theme {
-	.icon-moon {
+	.icon-sunny {
 		display: none;
 	}
 
@@ -10,11 +10,11 @@
 
 		&:checked {
 			+ label {
-				.icon-sunny {
+				.icon-moon {
 					display: none;
 				}
 
-				.icon-moon {
+				.icon-sunny {
 					display: block;
 				}
 			}
@@ -23,5 +23,6 @@
 
 	label {
 		cursor: pointer;
+		display: inline-block;
 	}
 }
