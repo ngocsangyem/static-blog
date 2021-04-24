@@ -8,6 +8,8 @@ body {
 	font-size: var(--text-base-size, 1em);
 	font-family: var(--font-primary, sans-serif);
 	color: var(--color-contrast-high, hsl(240, 4%, 20%));
+
+	@include fontSmooth();
 }
 
 h1,

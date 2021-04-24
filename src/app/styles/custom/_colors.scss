@@ -13,6 +13,14 @@
 	@include defineColorHSL(--color-accent-light, 355, 90%, 71%);
 	@include defineColorHSL(--color-accent-lighter, 355, 90%, 81%);
 
+	@include defineColorHSL(--color-background-alt-darker, 0, 0%, 80%);
+	@include defineColorHSL(--color-background-alt-dark, 0, 0%, 90%);
+	@include defineColorHSL(--color-background-alt, 0, 0%, 100%);
+	@include defineColorHSL(--color-background-alt-light, 0, 0%, 100%);
+	@include defineColorHSL(--color-background-alt-lighter, 0, 0%, 100%);
+
+
+
 	@include defineColorHSL(--color-black, 240, 8%, 12%);
 	@include defineColorHSL(--color-black-light, 240, 8%, 22%);
 	@include defineColorHSL(--color-black-lighter, 240, 8%, 32%);
@@ -48,11 +56,6 @@
 	@include defineColorHSL(--color-contrast-higher, 240, 8%, 12%);
 }
 
-[data-theme] {
-	background-color: var(--color-bg);
-	color: var(--color-contrast-high);
-}
-
 @supports(--css: variables) {
 	[data-theme="dark"] {
 		// main
@@ -67,6 +70,12 @@
 		@include defineColorHSL(--color-accent, 355, 90%, 61%);
 		@include defineColorHSL(--color-accent-light, 355, 90%, 71%);
 		@include defineColorHSL(--color-accent-lighter, 355, 90%, 81%);
+
+		@include defineColorHSL(--color-background-alt-darker, 220, 33%, 0%);
+		@include defineColorHSL(--color-background-alt-dark, 220, 33%, 1%);
+		@include defineColorHSL(--color-background-alt, 220, 33%, 2%);
+		@include defineColorHSL(--color-background-alt-light, 220, 33%, 12%);
+		@include defineColorHSL(--color-background-alt-lighter, 220, 33%, 22%);
 
 		@include defineColorHSL(--color-black, 240, 8%, 12%);
 		@include defineColorHSL(--color-black-light, 240, 8%, 22%);

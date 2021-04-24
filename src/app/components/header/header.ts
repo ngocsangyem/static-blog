@@ -1,3 +1,4 @@
+import { SearchComponent } from '../search/search';
 import { ToggleThemeComponent } from '../toggle-theme/toggle-theme';
 
 export default class HeaderComponent {
@@ -6,6 +7,7 @@ export default class HeaderComponent {
 	mainNav = <HTMLElement>document.querySelector('.main-nav');
 	constructor() {
 		new ToggleThemeComponent();
+		SearchComponent.init()
 		this.handleMainNavMobile();
 	}
 

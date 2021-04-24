@@ -1,4 +1,5 @@
 @import '../toggle-theme/toggle-theme';
+@import '../search/search';
 
 .header {
 	&__inner {
@@ -7,29 +8,27 @@
 
 		@include pad(var(--space-lg), null, var(--space-sm), null)
 	}
+}
 
-	.nav-buttons {
-		margin-left: auto;
+.nav-buttons {
+	display: flex;
+	align-items: center;
 
-		display: flex;
-		align-items: center;
+	svg {
+		width: var(--text-lg);
+		height: var(--text-lg);
+		fill: var(--color-contrast-higher);
 
-		svg {
-			width: var(--text-lg);
-			height: var(--text-lg);
-			fill: var(--color-contrast-higher);
-
-			path {
-				stroke: var(--color-contrast-higher);
-			}
+		path {
+			stroke: var(--color-contrast-higher);
 		}
+	}
 
-		.nav-button {
-			line-height: 1;
+	.nav-button {
+		line-height: 1;
 
-			&:not(:last-child) {
-				margin-right: var(--space-sm);
-			}
+		&:not(:last-child) {
+			margin-right: var(--space-sm);
 		}
 	}
 }
@@ -40,6 +39,7 @@
 			text-decoration: none;
 			font-size: 1rem;
 			font-weight: 700;
+			line-height: 24px;
 
 			display: block;
 
@@ -52,7 +52,7 @@
 	&__link {
 		display: inline-block;
 
-		font-family: var(--secondary-font-family);
+		font-family: var(--font-secondary, serif);
 		font-size: var(--text-xl);
 		font-weight: 700;
 		text-decoration: none;
@@ -61,29 +61,86 @@
 	}
 }
 
-@media screen and (max-width: map-get($map: $breakpoints, $key: md)) {
+@media screen and (min-width: map-get($map: $breakpoints, $key: md) + 0.0625) {
+	.header {
+		&__inner {
+			flex-direction: column;
+		}
+	}
+
 	.main-nav {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 200;
+		display: flex;
+		align-items: center;
 
-		width: 100%;
-		height: 100%;
-
-		opacity: 0;
-		visibility: hidden;
-		background-color: var(--color-bg, white);
-		transition: all 0.3s ease-in-out;
+		margin-top: var(--space-md);
 
 		.nav {
-			width: calc(100% - 2*var(--component-padding));
+			&__title {
+				display: none;
+			}
+
+			&__list {
+				display: flex;
+				align-items: center;
+			}
+
+			&__item {
+				margin-right: var(--space-lg);
+			}
+
+			&__link {
+				@include pad(var(--space-xxs));
+				transition: color 0.3s ease-in-out;
+
+				&:hover {
+					color: var(--color-primary);
+				}
+			}
+		}
+	}
+
+	.nav-buttons {
+		.open-main-nav {
+			display: none;
+		}
+
+		.nav-button {
+			cursor: pointer;
+		}
+
+		svg {
+			width: var(--text-md);
+			height: var(--text-md);
+		}
+	}
+}
+
+@media screen and (max-width: map-get($map: $breakpoints, $key: md)) {
+	.main-nav {
+		margin-left: auto;
+
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 200;
+
+			width: 100%;
 			height: 100%;
 
-			position: relative;
+			opacity: 0;
+			visibility: hidden;
+			background-color: var(--color-bg, #fff);
+			transition: all 0.3s ease-in-out;
 
-			@include mar(null, auto, null, auto);
-			@include pad(var(--space-lg), null, null, null);
+
+			&__box {
+				width: calc(100% - 2*var(--component-padding));
+				height: 100%;
+
+				@include mar(null, auto, null, auto);
+				@include pad(var(--space-lg), null, null, null);
+			}
 
 			&__link {
 				@include pad(var(--space-sm), null, var(--space-sm), null)
@@ -95,7 +152,7 @@
 
 				margin-bottom: var(--space-sm);
 
-				font-family: var(--secondary-font-family);
+				font-family: var(--font-secondary, serif);
 				font-weight: 700;
 
 				span {
@@ -107,6 +164,7 @@
 				margin-left: auto;
 
 				line-height: 1;
+
 				svg {
 					width: 30px;
 					height: 30px;
@@ -115,8 +173,10 @@
 		}
 
 		&.is-show {
-			opacity: 1;
-			visibility: visible;
+			.nav {
+				opacity: 1;
+				visibility: visible;
+			}
 		}
 	}
 }
