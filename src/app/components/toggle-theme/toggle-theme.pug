@@ -2,7 +2,7 @@ mixin toggle-theme(data)
 	- data = data || {}
 	- data.class = data.class || ''
 
-	.toggle-theme.reset(class=data.class, aria-label="Enable light mode" role="button")&attributes(attributes)
+	button.toggle-theme.reset(class=data.class, aria-label="Enable light mode" role="button")&attributes(attributes)
 		input#toggleThemeInput(type="checkbox")
 		label(for="toggleThemeInput") 
 			svg.icon-moon.icon(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')

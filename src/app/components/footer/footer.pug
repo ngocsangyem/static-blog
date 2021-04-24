@@ -1,2 +1,39 @@
-footer
-	h2 This is footer
+include ../newsletter/newsletter
+
+footer.footer
+	.container
+		.footer__inner
+			.grid.gap-sm
+				div(class="col-12 col-6\@md col-4\@lg")
+					.widget.widget-nav
+						.widget__head
+							h3 Menu
+						ul.nav__list
+							li.nav__item
+								a.nav__link(href="/" title="home page") Home
+							li.nav__item
+								a.nav__link(href="/about.html" title="about page") About
+							li.nav__item
+								a.nav__link(href="/contact.html" title="contact page") Contact
+				div(class="col-12 col-6\@md col-4\@lg")
+					.widget.widget-newsletter
+						.widget__head
+							h3 Get interesting news
+						.newsletter__inner
+							p.newsletter__description Subscribe to our newsletter and we’ll send you the emails of latest posts.
+							+newsletter()
+				div(class="col-12 col-4\@lg")
+					.widget.widget-tags
+						.widget__head
+							h3 Explore tags
+						.tag__list
+							a.tag__link(href='/tag/fashion.html' title="fashion") fashion
+							a.tag__link(href='/tag/hobby.html' title="hobby") hobby
+							a.tag__link(href='/tag/lifestyle.html' title="lifestyle") lifestyle
+							a.tag__link(href='/tag/notes.html' title="notes") notes
+							a.tag__link(href='/tag/rest.html' title="rest") rest
+							a.tag__link(href='/tag/story.html' title="story") story
+							a.tag__link(href='/tag/study.html' title="study") study
+							a.tag__link(href='/tag/technology.html' title="technology") technology
+							a.tag__link(href='/tag/travel.html' title="travel") travel
+							a.tag__link(href='/tag/workflow.html' title="workflow") workflow

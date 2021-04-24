@@ -1,0 +1,103 @@
+@import '../newsletter/newsletter';
+
+.footer {
+	&__inner {
+		background-color: var(--color-background-alt);
+
+		border-radius: var(--radius-primary);
+
+		@include pad(1.75rem, 1.75rem, calc(1.75rem - var(--space-xxxs)), 1.75rem)
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	.col-12 {
+		&:last-child {
+			.widget {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.widget {
+	margin-bottom: var(--space-lg);
+
+	&__head {
+		font-family: var(--font-secondary);
+		font-weight: 700;
+
+		margin-bottom: var(--space-md);
+
+		h3 {
+			font-size: 1.25rem;
+		}
+	}
+
+	.nav__item {
+		margin-bottom: var(--space-xs);
+		padding-bottom: var(--space-xs);
+
+		border-bottom: 1px solid var(--color-bg);
+	}
+
+	.nav__link {
+		color: var(--color-contrast-higher);
+		display: block;
+
+		font-size: 1rem;
+		font-weight: 700;
+	}
+
+	.tag__link {
+		display: inline-block;
+
+		padding: 0.5rem 1rem;
+		@include mar(null, var(--space-xxxs), var(--space-xxxs), null);
+		border-radius: var(--radius-secondary);
+
+		background-color: var(--color-bg);
+		color: var(--color-contrast-medium);
+
+		font-size: 0.6875rem;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	.newsletter__description {
+		font-size: 0.875rem;
+
+		margin-bottom: var(--space-md);
+	}
+}
+
+@media screen and (min-width: map-get($map: $breakpoints, $key: md) + 0.0625) {
+
+	.footer {
+		&__inner {
+			@include pad(2.75rem, 2.75rem, calc(2.75rem - var(--space-xxxs)), 2.75rem)
+		}
+	}
+
+	.widget {
+
+		.nav__link,
+		.tag__link {
+			transition: color 0.3s ease-in-out;
+		}
+
+		.nav__link {
+			&:hover {
+				color: var(--color-primary);
+			}
+		}
+
+		.tag__link {
+			&:hover {
+				color: var(--color-link);
+			}
+		}
+	}
+}

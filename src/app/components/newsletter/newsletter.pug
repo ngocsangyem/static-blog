@@ -1,0 +1,17 @@
+mixin newsletter(data)
+	- data = data || {}
+	- data.class = data.class || ''
+
+	form.newsletter-form.js-newsletter-form(class=data.class)&attributes(attributes)
+		.newsletter-form__group
+			label.sr-only(for="newsletter-form-input") Email address
+			input.newsletter-form__input.reset#newsletter-form-input(type="text" placeholder="Email" name="newsletter-input")
+			button.newsletter-form__btn.reset.js-newsletter-form__btn(type="button" name="subscribe")
+				span Join
+				span
+					svg.x-nxd(viewBox='0 0 24 24')
+						path.path-1(d='M2,12a10,10,0,0,0,20,0' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2')
+						path.path-2(d='M2,12l6,6L22,4' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2')
+						line.path-3(x1='12' y1='2' x2='12' y2='16' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2')
+						circle.path-4(cx='12' cy='21.5' r='1.5' fill='currentColor')
+

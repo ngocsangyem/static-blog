@@ -54,6 +54,18 @@
 	@include defineColorHSL(--color-contrast-medium, 240, 1%, 48%);
 	@include defineColorHSL(--color-contrast-high, 240, 4%, 20%);
 	@include defineColorHSL(--color-contrast-higher, 240, 8%, 12%);
+
+	@include defineColorHSL(--color-link-darker, 225, 40%, 0%);
+	@include defineColorHSL(--color-link-dark, 225, 40%, 8%);
+	@include defineColorHSL(--color-link, 225, 40%, 16%);
+	@include defineColorHSL(--color-link-light, 225, 40%, 26%);
+	@include defineColorHSL(--color-link-lighter, 225, 40%, 36%);
+
+	@include defineColorHSL(--color-form-input-darker, 225, 40%, 0%);
+	@include defineColorHSL(--color-form-input-dark, 225, 40%, 8%);
+	@include defineColorHSL(--color-form-input, 225, 40%, 16%);
+	@include defineColorHSL(--color-form-input-light, 225, 40%, 26%);
+	@include defineColorHSL(--color-form-input-lighter, 225, 40%, 36%);
 }
 
 @supports(--css: variables) {
@@ -110,5 +122,17 @@
 		@include defineColorHSL(--color-contrast-medium, 240, 1%, 57%);
 		@include defineColorHSL(--color-contrast-high, 0, 0%, 89%);
 		@include defineColorHSL(--color-contrast-higher, 0, 0%, 100%);
+
+		@include defineColorHSL(--color-link-darker, 0, 0%, 74%);
+		@include defineColorHSL(--color-link-dark, 0, 0%, 84%);
+		@include defineColorHSL(--color-link, 0, 0%, 94%);
+		@include defineColorHSL(--color-link-light, 0, 0%, 97%);
+		@include defineColorHSL(--color-link-lighter, 0, 0%, 100%);
+
+		@include defineColorHSL(--color-form-input-darker, 223, 37%, 0%);
+		@include defineColorHSL(--color-form-input-dark, 223, 37%, 3%);
+		@include defineColorHSL(--color-form-input, 223, 37%, 7%);
+		@include defineColorHSL(--color-form-input-light, 223, 37%, 17%);
+		@include defineColorHSL(--color-form-input-lighter, 223, 37%, 27%);
 	}
 }

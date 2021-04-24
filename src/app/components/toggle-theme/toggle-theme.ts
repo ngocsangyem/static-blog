@@ -1,5 +1,6 @@
 export class ToggleThemeComponent {
 	themeSwitch = <HTMLInputElement>document.querySelector('#toggleThemeInput');
+	toggleTheme = <HTMLElement>document.querySelector('.toggle-theme');
 
 	constructor() {
 		this.handleThemeSwitch();
@@ -12,9 +13,13 @@ export class ToggleThemeComponent {
 		// update checkbox
 		this.themeSwitch.checked = darkThemeSelected;
 		// update body data-theme attribute
-		darkThemeSelected
-			? document.body.setAttribute('data-theme', 'dark')
-			: document.body.removeAttribute('data-theme');
+		if (darkThemeSelected) {
+			document.body.setAttribute('data-theme', 'dark');
+			this.toggleTheme.setAttribute('aria-label', 'Enable light mode');
+		} else {
+			document.body.removeAttribute('data-theme');
+			this.toggleTheme.setAttribute('aria-label', 'Enable dark mode');
+		}
 	}
 
 	resetTheme() {
@@ -22,9 +27,11 @@ export class ToggleThemeComponent {
 			// dark theme has been selected
 			document.body.setAttribute('data-theme', 'dark');
 			localStorage.setItem('themeSwitch', 'dark');
+			this.toggleTheme.setAttribute('aria-label', 'Enable light mode');
 		} else {
 			document.body.removeAttribute('data-theme');
 			localStorage.removeItem('themeSwitch');
+			this.toggleTheme.setAttribute('aria-label', 'Enable dark mode');
 		}
 	}
 

@@ -1,0 +1,150 @@
+@import "../../styles/styles.scss";
+
+.newsletter-form {
+	--news-form-input-height: 48px;
+	--news-form-input-padding-x: 18px;
+	--news-form-input-radius: 50em;
+	--news-form-btn-margin: 4px;
+	--news-form-btn-padding-x: 16px;
+	--news-form-icon-size: 24px;
+
+
+	&__group {
+		position: relative;
+	}
+
+	&__input {
+		border-radius: var(--radius-secondary);
+		background-color: var(--color-form-input);
+		color: #fff;
+
+		padding: 0 var(--news-form-input-padding-x);
+
+		width: 100%;
+		height: var(--news-form-input-height);
+
+		border-radius: var(--news-form-input-radius);
+		transition: .2s;
+
+		font-size: 0.875rem;
+		font-weight: 500;
+
+		&:focus {
+			outline: none;
+			box-shadow: var(--shadow-md), 0 0 0 2px var(--color-primary);
+		}
+
+		&::placeholder {
+			color: #fff;
+		}
+	}
+
+	&__btn {
+
+		display: inline-block;
+		overflow: hidden;
+
+		position: absolute;
+		top: var(--news-form-btn-margin);
+		right: var(--news-form-btn-margin);
+
+		height: calc(var(--news-form-input-height) - 2*var(--news-form-btn-margin));
+
+		padding: 0 var(--news-form-btn-padding-x);
+
+		background-color: var(--color-background-alt);
+
+		color: var(--color-link);
+		border-radius: calc(var(--news-form-input-radius) * 0.85);
+		box-shadow: var(--shadow-sm);
+
+		font-size: 0.8125rem;
+		font-weight: 700;
+		text-transform: uppercase;
+
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		cursor: pointer;
+		transition: .2s;
+
+		&:active {
+			transform: translateY(2px);
+		}
+
+		svg {
+			display: block;
+			width: var(--news-form-icon-size);
+			height: var(--news-form-icon-size);
+
+			>* {
+				transform-origin: 50% 50%;
+			}
+		}
+
+		span {
+			&:last-child {
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				width: 100%;
+				height: 100%;
+
+				transform: translateY(100%);
+			}
+		}
+
+		>* {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			transition: transform .3s ease-out;
+		}
+
+		.path-1 {
+			stroke-dashoffset: 160;
+			stroke-dasharray: 32;
+		}
+
+		.path-2 {
+			stroke-dashoffset: 30;
+			stroke-dasharray: 30;
+		}
+
+		.path-3 {
+			stroke-dashoffset: 14;
+			stroke-dasharray: 14;
+		}
+
+		.path-4 {
+			transform-origin: 12px 21.5px;
+			transform: scale(0);
+		}
+	}
+}
+
+@keyframes news-input-circle-anim-loader {
+	0% {
+		transform: rotate(0);
+		stroke-dashoffset: 160;
+	}
+
+	100% {
+		stroke-dashoffset: 96;
+		transform: rotate(-180deg);
+	}
+}
+
+@keyframes news-input-circle-anim-success {
+	0% {
+		transform: rotate(0);
+		stroke-dashoffset: 160;
+	}
+
+	100% {
+		transform: rotate(-180deg);
+		stroke-dashoffset: 96;
+	}
+}
