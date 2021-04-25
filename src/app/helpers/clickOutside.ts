@@ -7,12 +7,14 @@
  */
 
 const clickOutside = (el: HTMLElement, callback: Function) => {
-	document.addEventListener('click', function (event) {
+	const handleClickOutside = (event: Event) => {
 		const isClickedOutside = !el.contains((<HTMLElement>event.target));
 		if (isClickedOutside) {
 			callback();
+			document.removeEventListener('click', handleClickOutside);
 		}
-	});
+	}
+	document.addEventListener('click', handleClickOutside);
 };
 
 export { clickOutside };

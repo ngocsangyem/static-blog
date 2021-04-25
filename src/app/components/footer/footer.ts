@@ -1,3 +1,12 @@
-const Footer = () => console.log('this is footer');
+import { NewsletterComponent } from '../newsletter/newsletter';
 
-export { Footer };
+export default class FooterComponent {
+	constructor() {
+		NewsletterComponent.init();
+	}
+
+	static init() {
+		const footer = new FooterComponent();
+		return footer;
+	}
+}
