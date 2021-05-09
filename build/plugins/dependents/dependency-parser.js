@@ -48,7 +48,7 @@ const defaultConfig = {
 
 	'.scss': {
 		parserSteps: [
-			/^\s*@import\s+(.+?);/gm,
+			/(?:^|;|{|}|\*\/)\s*@(import|use|forward)\s+((?:"[^"]+"|'[^']+'|url\((?:"[^"]+"|'[^']+'|[^)]+)\))(?:\s*,\s*(?:"[^"]+"|'[^']+'|url\((?:"[^"]+"|'[^']+'|[^)]+)\)))*)(?=[^;]*;)/gm,
 			function (str) {
 				const absolute = str.match(/^[\\/]+(.+)/);
 				if (absolute) {
@@ -56,7 +56,7 @@ const defaultConfig = {
 				}
 				return [stylesAlias(str)];
 			},
-			/"([^"]+)"|'([^']+)'/gm,
+			/"([^"]+)"|'([^']+)'|url\((?:"([^"]+)"|'([^']+)'|([^)]+))\)/gm,
 		],
 		prefixes: ['_'],
 		postfixes: ['.scss', '.sass'],
