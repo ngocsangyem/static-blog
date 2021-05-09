@@ -27,6 +27,7 @@ const plugin = (parserConfig, pluginConfig) => {
 	// Return the stream transform.
 	return obj(
 		function (file, encoding, callback) {
+			console.log('🚀 ~ file: index.js ~ line 30 ~ plugin ~ file', file)
 			// Get the files that depend on the current file.
 			let dependentFiles = dependencyTracker.updateAndGetDependents(
 				file,
