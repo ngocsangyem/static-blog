@@ -6,6 +6,27 @@ const {
 	basename,
 	join,
 } = require('path');
+const { config } = require('../../utils');
+
+const stylesAlias = (path) => {
+	for (let i = 0; i < Object.keys(config.alias).length; i++) {
+		let alias = Object.keys(config.alias)[i];
+		if (path.includes(alias)) {
+			return path.replace(alias, config.alias[alias]);
+		}
+	}
+	return path;
+};
+
+const pugAlias = (path) => {
+	for (let i = 0; i < Object.keys(config.alias).length; i++) {
+		let alias = Object.keys(config.alias)[i];
+		if (new RegExp(`^${alias}\/.*$`).test(path)) {
+			return path.replace(alias, config.alias[alias]);
+		}
+	}
+	return path;
+};
 
 const defaultConfig = {
 	'.pcss': {
@@ -25,33 +46,49 @@ const defaultConfig = {
 		basePaths: [],
 	},
 
-	// ".scss":
-	// {
-	//     parserSteps:
-	//     [
-	//         // The language semantics allow import statements with a comma-separated list of file paths.
-	//         // Therefore, we first extract the whole statement, and then extract each of the paths from that.
-	//         // /(?:^|;|{|}|\*\/)\s*@(import|use|forward)\s+((?:"[^"]+"|'[^']+'|url\((?:"[^"]+"|'[^']+'|[^)]+)\))(?:\s*,\s*(?:"[^"]+"|'[^']+'|url\((?:"[^"]+"|'[^']+'|[^)]+)\)))*)(?=[^;]*;)/gm,
-	//         // /"([^"]+)"|'([^']+)'|url\((?:"([^"]+)"|'([^']+)'|([^)]+))\)/gm
-	//     ],
-	//     prefixes: ["_"],
-	//     postfixes: [".scss", ".sass"],
-	//     basePaths: []
+	'.scss': {
+		parserSteps: [
+			/^\s*@import\s+(.+?);/gm,
+			function (str) {
+				const absolute = str.match(/^[\\/]+(.+)/);
+				if (absolute) {
+					str = resolve(paths._app, absolute[1]);
+				}
+				return [stylesAlias(str)];
+			},
+			/"([^"]+)"|'([^']+)'/gm,
+		],
+		prefixes: ['_'],
+		postfixes: ['.scss', '.sass'],
+		basePaths: [],
+	},
+
+	// '.sass': {
+	// 	parserSteps: [
+	// 		// The exact language semantics are not well documented, but it appears it might allow multi-line import statements.
+	// 		// However, we only support single-line statements, as RegExp is not good at reliably matching indent-based syntax.
+	// 		// /^\s*@import\s+(.*)$/gm,
+	// 		// /"([^"]+)"|'([^']+)'|url\((?:"([^"]+)"|'([^']+)'|([^)]+))\)|([^\s]+)/gm
+	// 	],
+	// 	prefixes: ['_'],
+	// 	postfixes: ['.scss', '.sass'],
+	// 	basePaths: [],
 	// },
 
-	// ".sass":
-	// {
-	//     parserSteps:
-	//     [
-	//         // The exact language semantics are not well documented, but it appears it might allow multi-line import statements.
-	//         // However, we only support single-line statements, as RegExp is not good at reliably matching indent-based syntax.
-	//         // /^\s*@import\s+(.*)$/gm,
-	//         // /"([^"]+)"|'([^']+)'|url\((?:"([^"]+)"|'([^']+)'|([^)]+))\)|([^\s]+)/gm
-	//     ],
-	//     prefixes: ["_"],
-	//     postfixes: [".scss", ".sass"],
-	//     basePaths: []
-	// }
+	'.pug': {
+		parserSteps: [
+			/^\s*(?:extends|include)\s+(.+?)\s*$/gm,
+			function (str) {
+				const absolute = str.match(/^[\\/]+(.+)/);
+				if (absolute) {
+					str = resolve(paths._app, absolute[1]);
+				}
+				return [pugAlias(str)];
+			},
+		],
+		prefixes: ['_'],
+		postfixes: ['.pug'],
+	},
 };
 
 const DependencyParser = (function () {
