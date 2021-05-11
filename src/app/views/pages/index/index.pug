@@ -3,9 +3,12 @@ extends ../../layouts/layout
 block var
 	- title = 'Home'
 	- bodyClass = 'home'
-
+include @/components/article/article
 
 block main
-	include @/components/header/header
-	include @/components/footer/footer
-	
+	section.main-content(aria-label="content")
+		.container
+			.grid
+				+article({
+					class: 'col-12'
+				})

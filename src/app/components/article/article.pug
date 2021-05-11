@@ -2,9 +2,30 @@ mixin article(data)
 	- data = data || {}
 	- data.class = data.class || ''
 	- data.content = data.content || 'Some content here'
+	- data.title = data.title || 'That which does not kill us makes us stronger'
+	- data.description = data.description || 'article description'
+	- data.tags = data.tags || [{ title: 'workflow', link: '#' }, { title: 'hobby', link: '#' }, { title: 'study', link: '#' }]
+	- data.link = data.link || '#'
+	- data.release_date = data.release_date || '14 Nov 2021'
+	- data.image = data.image || {src: 'https://images.unsplash.com/photo-1620607845876-214068622f8c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', alt: 'article'}
+	- data.author = data.author || { name: 'Sang', avatar: 'https://bracia.netlify.app/images/01-1.jpg', link: '#' }
 
-	.article(class=data.class)&attributes(attributes)
-		if block
-			block
-		else
-			!= data.content
+	article.article(class=data.class)&attributes(attributes)
+		.article__inner
+			.article__image
+				a(href=data.link, title=data.title)
+					img(src=data.image.src, alt=data.image.alt)
+			.article__content
+				h2.article__title
+					a(href=data.link, title=data.title)=data.title
+				p.article_description=data.description
+				footer.article__footer
+					.article__author
+						a.article__author-avatar(href=data.author.link, title=data.author.name)
+								img(src=data.author.avatar, alt=data.author.name)
+						.article__author-infos
+							a(href=data.author.link, title=data.author.name).article__author-name=data.author.name
+							time=data.release_date
+					.article__tags
+						each tag in data.tags
+							a(href=tag.link)=tag.title
