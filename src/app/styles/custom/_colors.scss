@@ -66,6 +66,12 @@
 	@include defineColorHSL(--color-form-input, 225, 40%, 16%);
 	@include defineColorHSL(--color-form-input-light, 225, 40%, 26%);
 	@include defineColorHSL(--color-form-input-lighter, 225, 40%, 36%);
+
+	@include defineColorHSL(--color-alt-text-darker, 224, 27%, 13%);
+	@include defineColorHSL(--color-alt-text-dark, 224, 27%, 23%);
+	@include defineColorHSL(--color-alt-text, 224, 27%, 33%);
+	@include defineColorHSL(--color-alt-text-light, 224, 27%, 43%);
+	@include defineColorHSL(--color-alt-text-lighter, 224, 27%, 53%);
 }
 
 @supports(--css: variables) {
@@ -134,5 +140,11 @@
 		@include defineColorHSL(--color-form-input, 223, 37%, 7%);
 		@include defineColorHSL(--color-form-input-light, 223, 37%, 17%);
 		@include defineColorHSL(--color-form-input-lighter, 223, 37%, 27%);
+
+		@include defineColorHSL(--color-alt-text-darker, 230, 5%, 34%);
+		@include defineColorHSL(--color-alt-text-dark, 230, 5%, 44%);
+		@include defineColorHSL(--color-alt-text, 230, 5%, 54%);
+		@include defineColorHSL(--color-alt-text-light, 230, 5%, 64%);
+		@include defineColorHSL(--color-alt-text-lighter, 230, 5%, 74%);
 	}
 }

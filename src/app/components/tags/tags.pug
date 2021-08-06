@@ -1,10 +1,8 @@
 mixin tags(data)
 	- data = data || {}
 	- data.class = data.class || ''
-	- data.content = data.content || 'Some content here'
+	- data.tags = data.tags || []
 
 	.tags(class=data.class)&attributes(attributes)
-		if block
-			block
-		else
-			!= data.content
+		each tag in data.tags
+			a.tag-item(href=tag.link)=tag.title

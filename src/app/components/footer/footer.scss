@@ -4,8 +4,6 @@
 	&__inner {
 		background-color: var(--color-background-alt);
 
-		border-radius: var(--radius-primary);
-
 		@include pad(1.75rem, 1.75rem, calc(1.75rem - var(--space-xxxs)), 1.75rem)
 	}
 

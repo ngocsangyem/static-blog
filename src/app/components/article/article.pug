@@ -1,3 +1,6 @@
+include ../tags/tags
+
+
 mixin article(data)
 	- data = data || {}
 	- data.class = data.class || ''
@@ -10,13 +13,13 @@ mixin article(data)
 	- data.image = data.image || {src: 'https://images.unsplash.com/photo-1620607845876-214068622f8c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', alt: 'article'}
 	- data.author = data.author || { name: 'Sang', avatar: 'https://bracia.netlify.app/images/01-1.jpg', link: '#' }
 
-	article.article(class=data.class)&attributes(attributes)
+	article.article.rad-primary(class=data.class)&attributes(attributes)
 		.article__inner
 			.article__image
 				a(href=data.link, title=data.title)
-					img(src=data.image.src, alt=data.image.alt)
+					img.rad-primary(src=data.image.src, alt=data.image.alt)
 			.article__content
-				h2.article__title
+				h2.article__title.ff-secondary
 					a(href=data.link, title=data.title)=data.title
 				p.article_description=data.description
 				footer.article__footer
@@ -26,6 +29,7 @@ mixin article(data)
 						.article__author-infos
 							a(href=data.author.link, title=data.author.name).article__author-name=data.author.name
 							time=data.release_date
-					.article__tags
-						each tag in data.tags
-							a(href=tag.link)=tag.title
+					+tags({
+						tags: data.tags,
+						class: 'article__tags'
+					})

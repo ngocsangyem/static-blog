@@ -38,7 +38,6 @@
 	@include pad(24px, calc(24px + var(--search-input-btn-width)), 24px, 24px);
 
 	border-color: transparent;
-	border-radius: var(--radius-primary);
 	background-color: var(--color-background-alt);
 	color: var(--color-contrast-higher);
 

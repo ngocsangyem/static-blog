@@ -82,3 +82,7 @@ mark {
 	--body-line-height: 1.58; // set body line-height
 	--text-vspace-multiplier: 1.2; // increase vertical spacing
 }
+
+.ff-secondary {
+	font-family: var(--font-secondary);
+}
